@@ -1,47 +1,63 @@
 // next.config.js
-module.exports = {
-  output: 'export', // Za statički sajt
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Output settings
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  
+  // Image optimization
   images: {
-    unoptimized: true, // Isključi optimizaciju slika
-  },
-  trailingSlash: true, // Dodaje / na kraju URL-ova
-};
-module.exports = {
-  output: 'export',
-  distDir: 'out',
-}
-module.exports = {
-  experimental: {
-    allowedDevOrigins: [
-      "https://*.replit.dev",
-      "https://*.replit.app",
-      "http://localhost:3000"
-    ]
-  }
-};
-module.exports = {
-  output: 'standalone', // Za bolju optimizaciju
-  images: {
+    unoptimized: process.env.NODE_ENV === 'production',
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/images/**',
       },
     ],
   },
-  // Sanity integracija
-  env: {
-    SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
-    SANITY_DATASET: process.env.SANITY_DATASET,
-  }
-};
-// next.config.js
-module.exports = {
-  // ... postojeća konfiguracija
-  experimental: {
-    allowedDevOrigins: [
-      "https://ea2be31a-c361-45c1-b9a8-431b2b2188be-00-c8wre886u7le.picard.replit.dev", 
-      "localhost"
+
+  // Internationalization (i18n) - opcionalno
+  i18n: {
+    locales: ['en', 'sr'],
+    defaultLocale: 'sr',
+  },
+
+  // Security headers
+  headers: async () => {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
     ]
-  }
+  },
+
+  // Webpack optimizacije
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false }
+    return config
+  },
+
+  // Dev-only settings
+  ...(process.env.NODE_ENV === 'development' && {
+    experimental: {
+      serverActions: true,
+    },
+  }),
 }
+
+module.exports = nextConfig
