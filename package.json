@@ -16,3 +16,7 @@
     "@netlify/plugin-nextjs": "5.11.4"
   }
 }
+"scripts": {
+  "build": "next build && next export",
+  "postbuild": "cp robots.txt ./out/robots.txt"
+}
