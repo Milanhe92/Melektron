@@ -19,3 +19,19 @@ module.exports = {
     ]
   }
 };
+module.exports = {
+  output: 'standalone', // Za bolju optimizaciju
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
+  // Sanity integracija
+  env: {
+    SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
+    SANITY_DATASET: process.env.SANITY_DATASET,
+  }
+};
