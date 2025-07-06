@@ -35,3 +35,13 @@ module.exports = {
     SANITY_DATASET: process.env.SANITY_DATASET,
   }
 };
+// next.config.js
+module.exports = {
+  // ... postojeća konfiguracija
+  experimental: {
+    allowedDevOrigins: [
+      "https://ea2be31a-c361-45c1-b9a8-431b2b2188be-00-c8wre886u7le.picard.replit.dev", 
+      "localhost"
+    ]
+  }
+}
