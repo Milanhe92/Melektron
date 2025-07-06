@@ -1,63 +1,31 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Output settings
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
-  
-  // Image optimization
+  // Replit-specific CORS settings
+  experimental: {
+    serverActions: true,
+  },
+
+  // Image configuration
   images: {
-    unoptimized: process.env.NODE_ENV === 'production',
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-        port: '',
-        pathname: '/images/**',
-      },
-    ],
+    unoptimized: true, // Required for static export
+    domains: ['cdn.sanity.io'], // Add your Sanity domain
   },
 
-  // Internationalization (i18n) - opcionalno
-  i18n: {
-    locales: ['en', 'sr'],
-    defaultLocale: 'sr',
-  },
+  // Enable React Strict Mode
+  reactStrictMode: true,
+}
 
-  // Security headers
-  headers: async () => {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-        ],
-      },
+// Dynamic CORS configuration for Replit
+if (process.env.NODE_ENV === 'development') {
+  nextConfig.experimental = {
+    ...nextConfig.experimental,
+    serverActions: true,
+    allowedOrigins: [
+      `https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`,
+      'http://localhost:3000'
     ]
-  },
-
-  // Webpack optimizacije
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, path: false }
-    return config
-  },
-
-  // Dev-only settings
-  ...(process.env.NODE_ENV === 'development' && {
-    experimental: {
-      serverActions: true,
-    },
-  }),
+  }
 }
 
 module.exports = nextConfig
