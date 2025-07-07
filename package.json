@@ -10,16 +10,17 @@
     "postbuild": "cp public/robots.txt out/robots.txt && cp public/tonconnect-manifest.json out/"
   },
   "dependencies": {
+    "@portabletext/react": "^3.0.10",
     "@sanity/client": "^6.8.0",
     "@sanity/image-url": "^1.0.2",
-    "@tonconnect/ui-react": "^2.2.0",
+    "@tonconnect/ui-react": "^2.2.1",
     "autoprefixer": "^10.4.19",
     "next": "^15.3.5",
+    "next-sanity": "^6.8.0",
     "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.0",
-    "@tonconnect/ui-react": "^2.0.0",
     "three": "^0.166.0"
   },
   "devDependencies": {
