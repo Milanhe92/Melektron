@@ -22,14 +22,14 @@
 }
 "scripts": {
   "dev": "next dev",
-  "build": "next build && next export", // Generiši statički sajt
+  "build": "next build && next export",a 
   "start": "next start"
 }
 {
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0",
-    "repl": "npm run dev"
+    "start": "next start",
+    "export": "next export" // Dodaj za statički build
   }
 }
