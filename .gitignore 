@@ -22,4 +22,6 @@ dist/
 build/
 .DS_Store
 netlify/functions/
+/out
+/.env.local
 
