@@ -1,7 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
-  functions = "netlify/functions"
+  publish = "out" # Next.js generiše statičke fajlove u /out
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs" # Dodaj Next.js plugin
 
 [build.environment]
   NODE_VERSION = "22"
