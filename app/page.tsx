@@ -1,3 +1,8 @@
+'use client';
+import { useEffect, useState } from 'react';
+import { urlFor, fetchQuantumPosts } from '@/lib/sanityUtils';
+import { fetchData } from '@/lib/api';
+
 import { useEffect, useState } from 'react';
 import { urlFor, fetchQuantumPosts } from '@/lib/sanityUtils';
 import { fetchData } from '@/lib/api';
