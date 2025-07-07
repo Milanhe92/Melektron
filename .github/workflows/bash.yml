@@ -1,0 +1,37 @@
+name: Build Test for Melektron
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Test Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: Add .npmrc file
+        run: echo "legacy-peer-deps=true" > .npmrc
+
+      - name: Show current dependencies
+        run: npm list --all
+
+      - name: Build the project
+        run: npm run build
