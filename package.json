@@ -21,3 +21,11 @@
     "@types/node": "^20.11.0"
   }
 }
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "postbuild": "cp public/robots.txt out/robots.txt && cp public/tonconnect-manifest.json out/",
+    "start": "next start"
+  }
+}
