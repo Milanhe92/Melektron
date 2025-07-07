@@ -10,7 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Pokreni bash komandu
-        run: |
-          echo "Ovo je bash"
-          ls -la
-          npm install
+        run: npm install
