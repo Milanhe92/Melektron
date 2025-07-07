@@ -20,6 +20,11 @@
   "build": "next build && next export",
   "postbuild": "cp robots.txt ./out/robots.txt"
 }
+"scripts": {
+  "dev": "next dev",
+  "build": "next build && next export", // Generiši statički sajt
+  "start": "next start"
+}
 {
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
