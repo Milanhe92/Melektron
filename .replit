@@ -1,0 +1,2 @@
+# .replit
+run = "npm run dev"
