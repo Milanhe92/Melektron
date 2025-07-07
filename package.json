@@ -5,18 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "postbuild": "cp public/robots.txt out/robots.txt && cp public/tonconnect-manifest.json out/",
-    "start": "next start"
-  },
-{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
     "export": "next export",
     "start": "next start",
-    "postbuild": "next-sitemap"
-  }
-}
+    "postbuild": "cp public/robots.txt out/robots.txt && cp public/tonconnect-manifest.json out/"
+  },
   "dependencies": {
     "@sanity/client": "^6.8.0",
     "@sanity/image-url": "^1.0.2",
@@ -27,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.0",
+    "@tonconnect/ui-react": "1.0.1",
     "three": "^0.166.0"
   },
   "devDependencies": {
