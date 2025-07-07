@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 import { urlFor, fetchQuantumPosts } from '@/lib/sanityUtils';
+import { fetchData } from '@/lib/api';
+
+export default async function Home() {
+  const data = await fetchData(); // API poziv sa tajnom
+}
 import { connectTONWallet, connectEthereumWallet } from '@/utils/cryptoUtils';
 
 export default function Home() {
