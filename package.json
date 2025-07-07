@@ -13,7 +13,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "@sanity/image-url": "^1.0.2",
-    "@tonconnect/ui-react": "^1.0.1",
+    "@tonconnect/ui-react": "^0.3.2",
     "three": "^0.166.0"
   },
   "devDependencies": {
