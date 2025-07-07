@@ -1,0 +1,16 @@
+name: Pokreni Bash skriptu
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Pokreni bash komandu
+        run: |
+          echo "Ovo je bash"
+          ls -la
+          npm install
