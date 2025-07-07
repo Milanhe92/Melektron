@@ -1,3 +1,9 @@
+// components/QuantumComments.tsx
+import React from 'react'
+
+export default function QuantumComments() {
+  return <div>Quantum Comments Placeholder</div>
+}
 'use client';
 
 import { useState, useEffect } from 'react';
