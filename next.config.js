@@ -1,32 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Obavezno za statički export
+  output: 'export',
   reactStrictMode: true,
   images: {
-    unoptimized: true, // Obavezno za statički export
+    unoptimized: true,
     domains: ['cdn.sanity.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.sanity.io',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.ton.org',
+      },
+    ],
   },
-  // Uklonjen experimental deo sa allowedDevOrigins
-  // jer je zastareo u Next.js 15.3+
-};
-
-// Dinamička CORS konfiguracija za Replit
-if (process.env.NODE_ENV === 'development') {
-  nextConfig.experimental = {
+  async headers() {
+    return [
+      {
+        source: '/_next/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS' },
+        ],
+      }
+    ];
+  },
+  experimental: {
     serverActions: true,
-    // allowedDevOrigins je zamenjen modernijim pristupom
-  };
-  
-  // Dodajemo headers za CORS
-  nextConfig.headers = async () => [
-    {
-      source: '/_next/:path*',
-      headers: [
-        { key: 'Access-Control-Allow-Origin', value: '*' },
-        { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS' },
-      ],
-    }
-  ];
-}
+    optimizePackageImports: ['three', '@tonconnect/ui-react']
+  }
+};
 
 module.exports = nextConfig;
