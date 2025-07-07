@@ -1,51 +1,60 @@
-/* Kvantni efekti za blog */
-.quantum-blog-post {
-  position: relative;
-  overflow-x: hidden;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --quantum-primary: #6d28d9;
+  --quantum-secondary: #0ea5e9;
+  --quantum-dark: #0f172a;
 }
 
-.quantum-particle-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(10, 10, 24, 1) 0%,
-    rgba(5, 5, 15, 1) 100%
-  );
-  z-index: -1;
-}
-
-.quantum-particle-background::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image: 
-    radial-gradient(white 1px, transparent 2px),
-    radial-gradient(cyan 1px, transparent 2px),
-    radial-gradient(purple 1px, transparent 2px);
-  background-size: 300px 300px;
-  background-position: 0 0, 100px 100px, 200px 200px;
-  opacity: 0.05;
-  animation: quantum-drift 120s infinite linear;
-}
-
-@keyframes quantum-drift {
-  100% {
-    transform: rotate(1deg) translate(50px, 25px);
+@layer base {
+  body {
+    @apply bg-[var(--quantum-dark)] text-white overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
   }
 }
 
-.quantum-post-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.quantum-post-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+@layer components {
+  .quantum-loader {
+    @apply relative w-24 h-24;
+  }
+  
+  .quantum-loader .particle {
+    @apply absolute w-4 h-4 rounded-full;
+    background: var(--quantum-primary);
+    animation: quantum-pulse 2s infinite ease-in-out;
+  }
+  
+  .quantum-loader .particle:nth-child(1) {
+    @apply top-0 left-1/2 -translate-x-1/2;
+    animation-delay: 0s;
+  }
+  
+  .quantum-loader .particle:nth-child(2) {
+    @apply bottom-0 left-0;
+    animation-delay: 0.66s;
+  }
+  
+  .quantum-loader .particle:nth-child(3) {
+    @apply bottom-0 right-0;
+    animation-delay: 1.33s;
+  }
+  
+  @keyframes quantum-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.3; }
+  }
+  
+  .quantum-grid {
+    @apply grid grid-cols-4 gap-4;
+  }
+  
+  .quantum-cell {
+    @apply aspect-square bg-gray-900 rounded-lg flex items-center justify-center;
+  }
+  
+  .quantum-dot {
+    @apply w-3 h-3 rounded-full bg-purple-600 animate-pulse;
+  }
 }
