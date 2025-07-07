@@ -1,7 +1,0 @@
-name: Pokreni Bash skriptu
-
-on:
-  push:
-    branches: [ main ]
-      - name: Pokreni bash komandu
-        run: npm install
