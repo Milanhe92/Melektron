@@ -1,3 +1,6 @@
+import { client } from '@/lib/sanity' // ažurirana putanja
+import { urlFor } from '@/lib/sanity' // ažurirana putanja
+import { PortableText } from '@portabletext/react' // novi import
 import { client } from '@/lib/sanity.client';
 import { groq } from 'next-sanity';
 import { PortableText } from '@portabletext/react';
