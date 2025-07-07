@@ -4,7 +4,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    // SAMO BACKEND PAKETI
-    // UKLONITE next-sanity i sve Next.js zavisnosti
+    
   }
 }
