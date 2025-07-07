@@ -1,0 +1,8 @@
+// next.config.js
+module.exports = {
+  output: 'export', // Za statički export (obavezno za Netlify)
+  images: {
+    unoptimized: true, // Obavezno za statički export
+  },
+  // Ukloni 'experimental' sekciju ako je prazna
+};
