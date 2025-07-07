@@ -51,3 +51,25 @@ module.exports = {
     return config;
   },
 };
+// next.config.js
+module.exports = {
+  // ...постојећа конфигурација...
+  
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.pdf$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/files',
+            outputPath: 'static/files',
+            name: '[name].[hash].[ext]',
+          },
+        },
+      ],
+    });
+    
+    return config;
+  },
+};
