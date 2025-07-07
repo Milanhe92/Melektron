@@ -12,6 +12,16 @@ jobs:
   build:
     name: Test Build
     runs-on: ubuntu-latest
+steps:
+- name: Instaliraj frontend zavisnosti
+  run: |
+    cd frontend
+    npm install
+
+- name: Instaliraj backend zavisnosti
+  run: |
+    cd backend
+    npm install --production # Instalira samo potrebne pakete
 
     steps:
       - name: Checkout repository
