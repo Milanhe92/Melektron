@@ -1,25 +1,19 @@
 [build]
   command = "npm run build"
-  publish = "out" # Next.js generiše statičke fajlove u /out
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs" # Dodaj Next.js plugin
+  publish = "out"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_SITE_URL = "https://melektron.com"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs"  # ✅ bez verzije
+  package = "@netlify/plugin-nextjs"
 
-[[plugins]]
-  package = "@netlify/plugin-emails"  # ✅ ako koristiš email funkcije
-
-[[redirects]]
+[redirects]
   from = "/donacije"
   to = "/donacije.html"
   status = 200
 
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
