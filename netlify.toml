@@ -18,11 +18,12 @@
   SANITY_PROJECT_ID = "@sanity_project_id"
   SANITY_DATASET = "staging"
 
-[redirects]
+[[redirects]]
   from = "/donacije"
   to = "/donacije.html"
   status = 200
 
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
