@@ -24,4 +24,6 @@ build/
 netlify/functions/
 /out
 /.env.local
-
+node_modules
+   .next
+   out
