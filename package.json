@@ -22,7 +22,7 @@
 }
 "scripts": {
   "dev": "next dev",
-  "build": "next build && next export",a 
+  "build": "next build && next export", 
   "start": "next start"
 }
 {
@@ -30,6 +30,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export" // Dodaj za statički build
+    "export": "next export"
   }
 }
