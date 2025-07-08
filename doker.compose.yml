@@ -1,0 +1,4 @@
+services:
+  frontend:
+    ports:
+      - "3000:3000"  # Ovo mapira host port 3000 na container port 3000
