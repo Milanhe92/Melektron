@@ -17,16 +17,27 @@ jobs:
           node-version: 20
           cache: 'npm'
           
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: |
+          npm install next-sanity@latest
+          npm install
+          
+      - name: Build Frontend
+        working-directory: ./frontend
         run: npm run build
         
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: |
+          npm remove next-sanity || true
+          npm install @sanity/client@latest
+          npm install
+          
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=out --prod
+          args: deploy --dir=frontend/out --prod
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
